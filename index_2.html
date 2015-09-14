@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Simple login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var user,pass;
+        $("#submit").click(function(){
+          user=$("#user").val();
+          pass=$("#password").val();
+          $.post("http://localhost:3000/login",{user: user,password: pass});
+        });
+      });
+    </script>
+
+  <script>
+    
+
+            console.log("I am called");
+            var data = {"emailId":"gopal@gmail.com"};
+
+            $.ajax({
+              type: 'POST',
+              data: JSON.stringify(data),
+             /* data: {
+                  blob: {wob:"1",job:"2", ar:[1,2,{a:'b'}]}
+              },*/
+              contentType: "application/json",
+              //contentType: "application/x-www-form-urlencoded",
+              dataType:'json',
+              url: 'http://localhost:3000/getData',                      
+              success: function(data) {
+                  console.log('success');
+                  console.log(JSON.stringify(data));                               
+              },
+              error: function(error) {
+                  console.log("some error in fetching the notifications");
+               }
+
+          });
+        
+  </script> 
+
+  </head>
+  <body>
+    <h1>Hello people !</h1>
+    <input type="TEXT" id="user" size="40"><br>
+    <input type="password" id="password" size="40"><br>
+    <input type="button" id="submit" value="Submit">
+
+    <button onclick="callNode()">call Node</button>
+  </body>
+</html>
